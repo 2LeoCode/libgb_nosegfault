@@ -7,14 +7,14 @@ int	gb_alloc_and_push(void *data_addr, size_t size)
 	ptr = (void **)data_addr;
 	*ptr = malloc(size);
 	if (!*ptr)
-		return (gb_erorr());
+		return (gb_error());
 	return (garbage(*ptr, free, push));
 }
 
 int	gb_calloc_and_push(void *data_addr, size_t size)
 {
 	void		**ptr;
-	unint64_t	*longptr;
+	uint64_t	*longptr;
 	char		*charptr;
 
 	ptr = (void **)data_addr;
@@ -31,4 +31,16 @@ int	gb_calloc_and_push(void *data_addr, size_t size)
 	while (size--)
 		*charptr++ = 0;
 	return (garbage(*ptr, free, push));
+}
+
+int	gb_construct_and_push(void *data_addr, t_constructor constructor,
+		void *constr_param, t_destructor destructor)
+{
+	void	**ptr;
+
+	ptr = (void **)data_addr;
+	*ptr = constructor(constr_param);
+	if (!*ptr)
+		return (gb_error());
+	return (garbage(*ptr, destructor, push));
 }

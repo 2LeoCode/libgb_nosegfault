@@ -1,4 +1,6 @@
-//
-// Created by Léo Suardi on 6/29/21.
-//
+#include <garbage.h>
 
+int	gb_push(void *data, t_destructor destructor)
+{
+	return (garbage(data, destructor, push));
+}

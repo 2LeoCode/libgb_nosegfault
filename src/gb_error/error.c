@@ -1,4 +1,7 @@
-//
-// Created by Léo Suardi on 6/29/21.
-//
+#include <garbage.h>
 
+int	gb_error(void)
+{
+	gb_clear();
+	return (-1);
+}

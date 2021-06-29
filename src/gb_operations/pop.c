@@ -1,4 +1,6 @@
-//
-// Created by Léo Suardi on 6/29/21.
-//
+#include <garbage.h>
 
+void	gb_pop(void)
+{
+	garbage(NULL, NULL, pop);
+}

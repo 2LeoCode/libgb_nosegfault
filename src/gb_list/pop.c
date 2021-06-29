@@ -1,4 +1,13 @@
-//
-// Created by Léo Suardi on 6/29/21.
-//
+#include <gblist.h>
 
+void	gblst_pop(t_gblst **lst_ptr)
+{
+	t_gblst	*tmp;
+
+	tmp = *lst_ptr;
+	if (!tmp)
+		return ;
+	*lst_ptr = tmp->next;
+	(*tmp->destructor)(tmp->data);
+	free(tmp);
+}

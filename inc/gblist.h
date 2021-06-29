@@ -1,8 +1,19 @@
-//
-// Created by Léo Suardi on 6/29/21.
-//
+#ifndef GBLIST_H
+# define GBLIST_H
 
-#ifndef LIBGB_NOSEGFAULT_GBLIST_H
-#define LIBGB_NOSEGFAULT_GBLIST_H
+# include <stdlib.h>
 
-#endif //LIBGB_NOSEGFAULT_GBLIST_H
+typedef void	(*t_destructor)(void *);
+
+typedef struct s_garbage_list
+{
+	void					*data;
+	t_destructor			destructor;
+	struct s_garbage_list	*next;
+}	t_gblst;
+
+int	gblst_push(t_gblst **lst_ptr, void *data, t_destructor destructor);
+void	gblst_pop(t_gblst **lst_ptr);
+void	gblst_clear(t_gblst **lst_ptr);
+
+#endif
