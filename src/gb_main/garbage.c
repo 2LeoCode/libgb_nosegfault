@@ -1,5 +1,4 @@
 #include <garbage.h>
-#include <gblist.h>
 
 int	garbage(void *data, t_destructor destructor, t_gbaction action)
 {

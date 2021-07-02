@@ -1,4 +1,4 @@
-#include <gblist.h>
+#include <garbage.h>
 
 int	gblst_push(t_gblst **lst_ptr, void *data, t_destructor destructor)
 {

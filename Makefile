@@ -18,15 +18,15 @@ OBJFOLD =	$(addprefix $(OBJDIR)/,\
 					main))
 
 SRC =		$(addsuffix $(word 1, $(.SUFFIXES)),\
-				$(addprefix gb_actions/,\
+				$(addprefix gb_actions/action_,\
 					clear\
 					pop\
 					push)\
 				gb_error/error\
-				$(addprefix gb_list/,\
+				$(addprefix gb_list/lst_,\
 					clear\
 					pop\
-					push)\
+					lpush)\
 				gb_main/garbage\
 				$(addprefix gb_operations/,\
 					alloc_push\
@@ -34,8 +34,7 @@ SRC =		$(addsuffix $(word 1, $(.SUFFIXES)),\
 					pop\
 					push))
 INC =		$(addsuffix $(word 3, $(.SUFFIXES)),\
-				garbage\
-				gblist)
+				garbage)
 LIB =		
 DLIB =		
 LIBNAME =	$(foreach lib, $(LIB),\

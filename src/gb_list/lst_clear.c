@@ -1,4 +1,4 @@
-#include <gblist.h>
+#include <garbage.h>
 
 void	gblst_clear(t_gblst **lst_ptr)
 {

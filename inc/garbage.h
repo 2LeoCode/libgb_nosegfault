@@ -4,11 +4,22 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <stdint.h>
-# include <gblist.h>
 
 typedef void	*(*t_constructor)(void *);
 typedef void	(*t_destructor)(void *);
+
+typedef struct s_garbage_list
+{
+	void					*data;
+	t_destructor			destructor;
+	struct s_garbage_list	*next;
+}	t_gblst;
+
 typedef int		(*t_action_fun)(t_gblst **, void *, t_destructor);
+
+int	gblst_push(t_gblst **lst_ptr, void *data, t_destructor destructor);
+void	gblst_pop(t_gblst **lst_ptr);
+void	gblst_clear(t_gblst **lst_ptr);
 
 typedef enum e_garbage_action
 {
